@@ -1,0 +1,11 @@
+.field {
+    width: 500px;
+    height: 500px;
+    border: 6px solid #776e65;
+    box-sizing: border-box;
+    background: #bbada0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+}

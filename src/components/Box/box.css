@@ -1,0 +1,15 @@
+.box {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: #cdc1b4;
+    border-radius: 5px;
+    min-width: 100px;
+    min-height: 100px;
+}
+
+.box.active {
+    background: #eee4da;
+    font-size: 28px;
+    font-weight: bold;
+}
