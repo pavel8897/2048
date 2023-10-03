@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import Box from '../Box/Box.jsx';
 import './field.css';
-
-let arr = []
-for(let i=1;i<=16;i++) {
-    arr.push({id: i, status: false});
-}
+import { useSelector } from 'react-redux';
 
 function Field() {    
-    const[box, setBox] = useState(arr);
+    const cells = useSelector(state => state)
     
-    const boxes = box.map(item => {
-        return <Box key={item.id} name={item.id} status={item.status} />
+    const boxes = box.map((item, i) => {
+        return <Box key={i} />
     })
 
     return (
