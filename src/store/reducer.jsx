@@ -1,5 +1,4 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { useReducer } from "react";
 
 let gridSize = 4;
 let arr = [];
@@ -9,6 +8,15 @@ for(let i=1;i<=gridSize;i++) {
     }
 }
 
-export const rootReducer = {
+const initialState = {
     cells: arr
+}
+
+export default function mainReducer (state = initialState, action) {
+    switch(action.type) {
+        case "COUNT":
+            return state
+        default:
+            return state
+    }
 }

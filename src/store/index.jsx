@@ -1,8 +1,8 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import { rootReducer } from "./reducer.jsx";
+import { mainReducer } from "./reducer.jsx";
 
 const cellsTable = combineReducers({
-    root: rootReducer
+    root: mainReducer
 })
 
 export const store = configureStore({
