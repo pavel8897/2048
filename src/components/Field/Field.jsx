@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import Box from '../Box/Box.jsx';
 import './field.css';
-import { useSelector } from 'react-redux';
 
-function Field() {    
-    const cells = useSelector(state => state)
-    console.log(cells)
+function Field({arr}) {
+    console.log(arr)
+    function getRandomCell() {
+        let emptyArr = []
+        arr.forEach(item => {
+            if(!item.count) {
+                emptyArr.push(item)
+            }
+        })
+        return emptyArr[Math.floor(Math.random() * (emptyArr.length))]
+    }
     
-    /*const boxes = box.map((item, i) => {
-        return <Box key={i} />
-    })*/
+    getRandomCell()
 
     return (
         <div className="field">

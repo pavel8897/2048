@@ -12,11 +12,8 @@ const initialState = {
     cells: arr
 }
 
-export default function mainReducer (state = initialState, action) {
-    switch(action.type) {
-        case "COUNT":
-            return state
-        default:
-            return state
+export default createReducer(initialState, {
+    [count]: function (state) {
+        return state
     }
-}
+})
