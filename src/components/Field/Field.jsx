@@ -23,8 +23,9 @@ function Field({cells, gridSize}) {
         return cells;
     }
 
-    function outField() {
+    function outField() {        
         let field = document.querySelector('.field');
+        field.innerHTML = '';
         for (let i = 0; i < gridSize; i++) {
           for (let j = 0; j < gridSize; j++) {
             let tile = cells[i][j];
@@ -36,7 +37,42 @@ function Field({cells, gridSize}) {
         }
     }
 
+    function moveLeft() {
+        for (let i = 0; i < gridSize; i++) {          
+          cells[i] = cells[i].filter(tile => tile);          
+          for (let j = 0; j < cells[i].length - 1; j++) {
+            if (cells[i][j] === cells[i][j + 1]) {
+                cells[i][j] *= 2;
+                cells[i][j + 1] = null;
+            }
+          }
+          cells[i] = cells[i].filter(tile => tile);
+          while (cells[i].length < gridSize) {
+            cells[i].push(null);
+          }
+        }
+        addCount();
+        outField();
+    }
+
+    function keyPress(e) {
+        if(e.key == 'ArrowLeft') {
+            moveLeft();
+        }
+        if(e.key == 'ArrowRight') {
+            console.log('right');
+        }
+        if(e.key == 'ArrowUp') {
+            console.log('up');
+        }
+        if(e.key == 'ArrowDown') {
+            console.log('down');
+        }
+    }
+
     addCount();
+    addCount();
+    window.addEventListener('keydown', keyPress)
     
     useEffect(() => {
         outField();

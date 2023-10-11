@@ -380,6 +380,9 @@ body {
     border-radius: 5px;
     min-width: 100px;
     min-height: 100px;
+    color: green;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 .box.active {
