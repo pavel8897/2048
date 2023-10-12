@@ -29,7 +29,7 @@ function Field({cells, gridSize}) {
         for (let i = 0; i < gridSize; i++) {
           for (let j = 0; j < gridSize; j++) {
             let tile = cells[i][j];
-            let cell = document.createElement('div');              
+            let cell = document.createElement('div');
             cell.classList.add('box');
             cell.innerHTML = tile ? tile : '';
             field.appendChild(cell);
@@ -55,12 +55,30 @@ function Field({cells, gridSize}) {
         outField();
     }
 
+    function moveRight() {
+        for(let i = 0; i < gridSize; i++) {
+            cells[i] = cells[i].filter(tile => tile);
+            for(let j = cells[i].length - 1; j > 0; j--) {
+                if(cells[i][j] === cells[i][j - 1]) {
+                    cells[i][j] *= 2;
+                    cells[i][j - 1] = null;
+                }
+            }
+            cells[i] = cells[i].filter(tile => tile);
+            while(cells[i].length < gridSize) {
+                cells[i].unshift(null);
+            }
+        }
+        addCount();
+        outField();
+    }
+    
     function keyPress(e) {
         if(e.key == 'ArrowLeft') {
             moveLeft();
         }
         if(e.key == 'ArrowRight') {
-            console.log('right');
+            moveRight();
         }
         if(e.key == 'ArrowUp') {
             console.log('up');
