@@ -32,7 +32,7 @@ function Field({cells, gridSize}) {
             let cell = document.createElement('div');
             cell.classList.add('box');
             cell.innerHTML = tile ? tile : '';
-            field.appendChild(cell);
+            field.appendChild(cell);            
           }
         }
     }
@@ -72,6 +72,48 @@ function Field({cells, gridSize}) {
         addCount();
         outField();
     }
+
+    function moveUp() {
+        for(let i = 0; i < gridSize; i++) {
+            let column = cells.map(row => row[i]).filter(tile => tile);
+            for(let j = 0; j < column.length - 1; j++) {
+                if(column[j] === column[j + 1]) {
+                    column[j] *= 2;
+                    column[j + 1] = null;
+                }
+            }
+            let newColumn = column.filter(tile => tile);
+            while(newColumn.length < gridSize) {
+                newColumn.push(null);
+            }
+            for(let f = 0; f < gridSize; f++) {
+                cells[f][i] = newColumn[f];
+            }
+        }
+        addCount();
+        outField();
+    }
+
+    function moveDown() {
+        for(let i = 0; i < gridSize; i++) {
+            let column = cells.map(row => row[i]).filter(tile => tile);
+            for(let j = column.length - 1; j > 0; j--) {
+                if(column[j] === column[j - 1]) {
+                    column[j] *= 2;
+                    column[j - 1] = null;
+                }
+            }
+            let newColumn = column.map(tile => tile);
+            while (newColumn.length < gridSize) {
+                newColumn.unshift(null);
+            }
+            for(let f = 0; f < gridSize; f++) {
+                cells[f][i] = newColumn[f];
+            }
+        }
+        addCount();
+        outField();
+    }
     
     function keyPress(e) {
         if(e.key == 'ArrowLeft') {
@@ -81,16 +123,16 @@ function Field({cells, gridSize}) {
             moveRight();
         }
         if(e.key == 'ArrowUp') {
-            console.log('up');
+            moveUp();
         }
         if(e.key == 'ArrowDown') {
-            console.log('down');
+            moveDown();
         }
     }
 
     addCount();
     addCount();
-    window.addEventListener('keydown', keyPress)
+    window.addEventListener('keydown', keyPress);
     
     useEffect(() => {
         outField();
