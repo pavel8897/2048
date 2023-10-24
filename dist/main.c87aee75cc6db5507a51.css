@@ -357,45 +357,48 @@ template {
 body {
     height: 100vh;
 }
-/*!**********************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Field/field.css ***!
-  \**********************************************************************************/
-.field {
-    width: 500px;
-    height: 500px;
-    border: 6px solid #776e65;
-    box-sizing: border-box;
-    background: #bbada0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 10px;
-}
 
-.box {
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    background-color: #cdc1b4;
-    border-radius: 5px;
-    min-width: 100px;
-    min-height: 100px;
-    color: green;
-    font-size: 40px;
-    font-weight: bold;
-}
-
-.box.active {
-    background: #eee4da;
-    font-size: 28px;
-    font-weight: bold;
-}
-/*!******************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/App/app.css ***!
-  \******************************************************************************/
 #root {
+    width: 100vw;
     height: 100vh;
+}
+
+.container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+}
+
+h3 {
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+
+select {
+    margin-bottom: 40px;
+    cursor: pointer;
+    background: #0064ff;
+    border: 0;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.pics {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 30px;
+    gap: 60px;
+}
+
+.pics img {
+    width: 300px;
+}
+
+.pics img:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    transition: .5s;
 }
